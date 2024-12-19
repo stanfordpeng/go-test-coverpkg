@@ -24,4 +24,9 @@ ok      mytestproject/math      (cached)        coverage: 66.7% of statements in
 go test -coverpkg=./utils  ./... 
         mytestproject/utils             coverage: 0.0% of statements
 ok      mytestproject/math      0.407s  coverage: 100.0% of statements in ./utils
+
+// comment log package in math, 1/3 functions are tested in math
+go test -coverpkg=./...  ./... 
+        mytestproject/utils             coverage: 0.0% of statements
+ok      mytestproject/math      0.396s  coverage: 33.3% of statements in ./...
 ```
