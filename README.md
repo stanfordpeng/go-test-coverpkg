@@ -12,7 +12,7 @@ It makes sense. If we only test package /math, Only add function is tested and s
 ## go test ./... with/out -coverpkg
 
 ### Case 1: 
-without -coverpkg, for math package, the function from imported package, aka. util.log, is not included into the denominator. so it will just be `Add` function tested out of `Add`, `Substract` function. For utils package, there is no test case at all.
+Without -coverpkg to include util package pattern, the function from utils package will not included into the denominator for the test coverage of math package. so it will just be `Add` function tested out of `Add`, `Substract` functions(50%). For utils package, there is no test case at all so it is 0%.
 ```
 go test -cover ./... -coverprofile=cover.out
         mytestproject/utils             coverage: 0.0% of statements
@@ -29,10 +29,12 @@ go tool cover will still calculate the overall test coverage which includes util
 Note that util.log function is used/tested in TestAdd as well
 
 ### Case 2
-With -coverpkg=./..., it will include functions imported from utils package. Therefore, 2/3 functions are tested in math. 
+With -coverpkg=./..., it will include functions imported from utils package. Therefore, 2/3 functions are tested in math package. 
 - Add function: tested
 - Log function: tested
 - Substract function: NOT tested
+
+For package utils, the denomintor is also 3 functions but none of them are tested in utils package.
 
   
 ```
@@ -47,7 +49,7 @@ total:                                  (statements)    66.7%
 ```
 
 ### Case 3
-with -coverpkg=./utils, only Log function from utils package is included as denominator in math package.
+with -coverpkg=./utils, only Log function from utils package is included as denominator in math package so it is 100% for math package.
 ```
 go test -coverpkg=./utils  ./...  -coverprofile=cover.out
         mytestproject/utils             coverage: 0.0% of statements
@@ -59,7 +61,7 @@ total:                                  (statements)    100.0%
 ```
 
 ### Case 4
-comment log package in math, 1/3 functions are tested in math
+If we comment the Log function in math.TestAdd and keep `-coverpkg=./...`, 1/3 functions are tested in math as now function `Log` is not tested anymore.
 
 ```
 go test -coverpkg=./...  ./...  -coverprofile=cover.out
