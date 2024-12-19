@@ -1,13 +1,13 @@
 # Without substract_test.go
 
-## 1/2 functions are tested
+## without coverpkg 1/2 functions are tested
 ```
 go test -cover ./math
 
 ok      mytestproject/math      0.244s  coverage: 50.0% of statements
 
 ```
-## 2/3 function are tested TestAdd
+## Test with coverpkg
 Note that util.log is tested in TestAdd
 ```
 // without coverpkg, for math package, imported package is not included 
