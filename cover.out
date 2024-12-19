@@ -1,0 +1,5 @@
+mode: set
+mytestproject/utils/logger.go:5.26,7.2 1 0
+mytestproject/math/add.go:3.24,5.2 1 1
+mytestproject/math/substract.go:3.29,5.2 1 0
+mytestproject/utils/logger.go:5.26,7.2 1 1
