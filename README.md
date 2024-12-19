@@ -8,7 +8,7 @@ ok      mytestproject/math      0.244s  coverage: 50.0% of statements
 
 ```
 ## 2/3 function are tested TestAdd
-Note that util.log is tested in 
+Note that util.log is tested in TestAdd
 ```
 // without coverpkg, for math package, imported package is not included 
 go test -cover ./...
